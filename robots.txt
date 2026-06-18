@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://severance-calculator-pi.vercel.app/sitemap.xml
