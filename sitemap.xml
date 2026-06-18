@@ -13,6 +13,14 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://severance-calculator-pi.vercel.app/interim-settlement-guide.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://severance-calculator-pi.vercel.app/annual-leave-pay-guide.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://severance-calculator-pi.vercel.app/contact.html</loc>
     <priority>0.3</priority>
   </url>

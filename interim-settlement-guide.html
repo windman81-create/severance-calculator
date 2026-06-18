@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>퇴직금 중간정산 신청 사유와 절차 정리 — 근로 계산 도구</title>
+<meta name="description" content="퇴직금 중간정산이 가능한 9가지 법정 사유, 신청 절차, 중간정산 이후 퇴직금 계산 방식까지 근로자퇴직급여 보장법 기준으로 정리했습니다.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1C1B18; --paper:#FAF8F3; --paper-2:#F1EEE6;
+    --line:#D8D3C5; --line-strong:#1C1B18;
+    --moss-deep:#283B2B; --rust:#A8472B; --gold:#9C7A2C; --muted:#6B6658;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{background:var(--paper);color:var(--ink);font-family:'IBM Plex Sans KR',sans-serif;line-height:1.75;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:720px;margin:0 auto;padding:0 24px 80px;}
+  header{border-bottom:1px solid var(--line-strong);padding:32px 0 24px;margin-bottom:8px;}
+  .masthead{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;}
+  .brand{font-family:'Source Serif 4',serif;font-size:15px;letter-spacing:0.12em;color:var(--muted);text-transform:uppercase;}
+  .brand a{color:inherit;text-decoration:none;}
+  nav.crumbs{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted);}
+  nav.crumbs a{color:var(--moss-deep);text-decoration:none;}
+  .eyebrow{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--moss-deep);margin:18px 0 10px;}
+  h1{font-family:'Source Serif 4',serif;font-weight:600;font-size:34px;margin:0 0 10px;letter-spacing:-0.01em;line-height:1.25;}
+  .lede{font-size:16px;color:var(--muted);margin:0;}
+  .updated{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted);margin:10px 0 0;}
+  section{margin-top:40px;}
+  h2{font-family:'Source Serif 4',serif;font-weight:600;font-size:22px;margin:0 0 14px;border-bottom:1px solid var(--line);padding-bottom:10px;}
+  h3{font-family:'IBM Plex Sans KR',sans-serif;font-weight:600;font-size:16px;margin:24px 0 10px;}
+  p{margin:0 0 16px;font-size:15.5px;}
+  ul,ol{margin:0 0 16px;padding-left:22px;}
+  li{font-size:15.5px;margin-bottom:8px;}
+  strong{font-weight:600;}
+  table{width:100%;border-collapse:collapse;margin:16px 0 24px;font-size:14px;}
+  th,td{border:1px solid var(--line);padding:10px 14px;text-align:left;}
+  th{background:var(--paper-2);font-weight:600;}
+  .callout{
+    background:var(--paper-2);
+    border-left:3px solid var(--gold);
+    padding:18px 20px;
+    border-radius:0 4px 4px 0;
+    margin:20px 0;
+    font-size:14.5px;
+  }
+  .callout strong{color:var(--ink);}
+  .cta{
+    margin-top:40px;
+    padding:24px;
+    background:var(--moss-deep);
+    border-radius:6px;
+    text-align:center;
+  }
+  .cta p{color:#E8E5DA;margin:0 0 12px;font-size:15px;}
+  .cta a{
+    display:inline-block;
+    background:var(--paper);
+    color:var(--moss-deep);
+    padding:11px 24px;
+    border-radius:3px;
+    text-decoration:none;
+    font-weight:600;
+    font-size:14px;
+  }
+  footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--line-strong);display:flex;justify-content:space-between;font-size:12px;color:var(--muted);flex-wrap:wrap;gap:8px;}
+  footer a{color:var(--muted);text-decoration:none;margin-left:12px;}
+  footer a:hover{color:var(--moss-deep);}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="masthead">
+      <span class="brand"><a href="/">근로 계산 도구</a></span>
+      <nav class="crumbs"><a href="/">홈</a> / 퇴직금 중간정산</nav>
+    </div>
+    <p class="eyebrow">근로 정보</p>
+    <h1>퇴직금 중간정산, 가능한 사유와 신청 절차</h1>
+    <p class="lede">퇴직금은 원칙적으로 퇴직 시 지급되지만, 법에서 정한 9가지 사유에 해당하면 재직 중에도 미리 받을 수 있습니다. 어떤 경우에 가능하고 어떻게 신청하는지 정리했습니다.</p>
+    <p class="updated">최종 수정일: 2026년 6월 18일</p>
+  </header>
+
+  <section>
+    <h2>퇴직금 중간정산이란</h2>
+    <p>퇴직금 중간정산은 근로자가 실제로 퇴직하지 않아도, 법에서 정한 특정 사유에 해당하면 그때까지의 계속근로기간에 대한 퇴직금을 미리 정산받는 제도입니다. 근로자퇴직급여 보장법 제8조제2항에 근거를 두고 있으며, <strong>근로자가 신청한다고 무조건 지급되는 것은 아니고 사용자(고용주)의 승낙이 있어야 지급</strong>됩니다.</p>
+    <div class="callout">
+      <strong>핵심</strong> — 중간정산을 받으면 그 시점까지의 근속기간은 정산된 것으로 처리되고, 이후의 퇴직금은 정산일 다음 날부터 새로 계산됩니다. 장기근속에 따른 퇴직금 누적 효과가 사라진다는 점을 신청 전에 꼭 고려해야 합니다.
+    </div>
+  </section>
+
+  <section>
+    <h2>중간정산이 가능한 9가지 법정 사유</h2>
+    <p>근로자퇴직급여 보장법 시행령 제3조는 중간정산이 허용되는 사유를 한정적으로 열거하고 있습니다. 아래 사유에 해당하지 않으면 중간정산을 진행할 수 없습니다.</p>
+    <ol>
+      <li><strong>무주택자 주택 구입</strong> — 신청일 기준으로 무주택자인 근로자가 본인 명의(또는 부부 공동명의)로 주택을 구입하는 경우</li>
+      <li><strong>전세금·임대차보증금 부담</strong> — 무주택자가 전세금이나 보증금이 필요한 경우(하나의 사업장에서 1회만 허용)</li>
+      <li><strong>장기요양 의료비 부담</strong> — 본인, 배우자, 부양가족이 6개월 이상 요양이 필요한 질병·부상이 있고, 의료비가 연간 임금총액의 12.5%를 초과하는 경우</li>
+      <li><strong>파산선고</strong> — 신청일 기준 5년 이내에 파산선고를 받은 경우</li>
+      <li><strong>개인회생절차 개시</strong> — 신청일 기준 5년 이내에 개인회생절차개시 결정을 받은 경우</li>
+      <li><strong>임금피크제 시행</strong> — 정년 연장·보장을 조건으로 임금이 줄어드는 제도가 시행되는 경우</li>
+      <li><strong>소정근로시간 단축 (노사 합의)</strong> — 1일 1시간 또는 1주 5시간 이상 근로시간을 줄이고 3개월 이상 그 조건으로 근무하기로 한 경우</li>
+      <li><strong>법정 근로시간 단축</strong> — 근로기준법 개정에 따라 근로시간이 줄어 퇴직금이 감소할 것으로 예상되는 경우</li>
+      <li><strong>재난 피해</strong> — 태풍, 홍수, 지진 등 재난으로 피해를 입어 고용노동부 장관이 고시한 사유에 해당하는 경우</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>신청 절차</h2>
+    <p>중간정산 절차는 크게 네 단계로 진행됩니다.</p>
+    <ol>
+      <li><strong>퇴직금 지급 대상 확인</strong> — 계속근로기간 1년 이상, 4주 평균 1주 15시간 이상 근무해야 중간정산 자체가 가능합니다.</li>
+      <li><strong>중간정산 사유 확인</strong> — 위 9가지 사유 중 하나에 해당하는지 확인합니다.</li>
+      <li><strong>신청서·증빙서류 제출</strong> — 회사에 중간정산 신청서와 사유별 증빙서류(주택매매계약서, 전세계약서, 의료비 영수증 등)를 제출합니다.</li>
+      <li><strong>사용자 승인 및 지급</strong> — 회사가 서류를 검토해 승인하면, 퇴직소득세를 원천징수한 후 세후 금액으로 지급합니다.</li>
+    </ol>
+    <div class="callout">
+      <strong>주의</strong> — 주택 구입 사유의 경우 신청 시기는 매매계약 체결일부터 소유권 이전 등기 후 1개월 이내로 제한됩니다. 사유별로 신청 가능한 시기가 다르니 미리 확인이 필요합니다.
+    </div>
+  </section>
+
+  <section>
+    <h2>중간정산 후 퇴직금은 어떻게 계산될까</h2>
+    <p>중간정산을 받은 이후 실제 퇴직할 때는, 정산일 다음 날부터 퇴직일까지의 기간만 새로 계산합니다. 예를 들어 10년을 근무한 시점에 중간정산을 받았다면, 이후 5년을 더 근무하고 퇴직할 경우 퇴직금은 그 5년치만 산정됩니다.</p>
+    <p>중간정산을 여러 구간으로 나눠 받았다면 구간별로 평균임금을 각각 계산해야 합니다. 입사일부터 중간정산일까지를 A구간, 중간정산 다음 날부터 최종 퇴직일까지를 B구간으로 나누어, 각 구간의 정산(또는 퇴직) 직전 3개월 임금을 기준으로 따로 계산합니다.</p>
+  </section>
+
+  <section>
+    <h2>세금은 어떻게 되나</h2>
+    <p>중간정산 퇴직금에도 퇴직소득세가 부과됩니다. 퇴직소득세는 근속연수가 길수록 공제가 커지는 구조인데, 중간정산을 하면 근속연수가 짧아져 최종 퇴직 시 세 부담이 늘어날 수 있습니다. 이를 보완하기 위해 소득세법에서는 퇴직소득 세액정산 특례를 두고 있어, 중간정산 퇴직금과 최종 퇴직금을 합산해 세액을 재계산하고 이미 납부한 세액을 차감하는 방식으로 부담을 줄일 수 있습니다. 구체적인 세액 계산은 세무 전문가와 상의하는 것이 정확합니다.</p>
+  </section>
+
+  <div class="cta">
+    <p>중간정산 전, 지금까지 쌓인 퇴직금이 얼마인지부터 확인해보세요.</p>
+    <a href="/">퇴직금 계산기 바로 가기</a>
+  </div>
+
+  <footer>
+    <span>근로 계산 도구</span>
+    <span><a href="/">홈</a><a href="/privacy.html">개인정보처리방침</a><a href="/terms.html">이용약관</a><a href="/contact.html">문의하기</a></span>
+  </footer>
+</div>
+</body>
+</html>
