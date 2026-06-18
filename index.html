@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>퇴직금 계산기 — 2026년 기준 정확한 퇴직금 모의계산</title>
+<meta name="description" content="입사일, 퇴사일, 임금 정보만 입력하면 근로기준법 기준 평균임금과 퇴직금을 바로 계산합니다. 상여금, 연차수당 포함 가능.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1C1B18;
+    --paper:#FAF8F3;
+    --paper-2:#F1EEE6;
+    --line:#D8D3C5;
+    --line-strong:#1C1B18;
+    --moss:#3F5B43;
+    --moss-deep:#283B2B;
+    --rust:#A8472B;
+    --gold:#9C7A2C;
+    --muted:#6B6658;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'IBM Plex Sans KR',sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:760px;margin:0 auto;padding:0 24px 80px;}
+
+  /* Header */
+  header{
+    border-bottom:1px solid var(--line-strong);
+    padding:40px 0 28px;
+    margin-bottom:8px;
+  }
+  .masthead{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+  .brand{
+    font-family:'Source Serif 4',serif;
+    font-size:15px;
+    letter-spacing:0.12em;
+    color:var(--muted);
+    text-transform:uppercase;
+  }
+  .date{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    color:var(--muted);
+  }
+  h1{
+    font-family:'Source Serif 4',serif;
+    font-weight:600;
+    font-size:42px;
+    line-height:1.15;
+    margin:18px 0 10px;
+    letter-spacing:-0.01em;
+  }
+  .lede{
+    font-size:16px;
+    color:var(--muted);
+    max-width:560px;
+    margin:0;
+  }
+
+  /* Section labels */
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--moss-deep);
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin:0 0 16px;
+  }
+  .eyebrow::before{
+    content:'';
+    width:18px;height:1px;
+    background:var(--moss-deep);
+  }
+
+  section{margin-top:48px;}
+
+  /* Form */
+  .field-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px 24px;
+  }
+  .field{display:flex;flex-direction:column;gap:6px;}
+  .field.full{grid-column:1 / -1;}
+  label{
+    font-size:13px;
+    font-weight:500;
+    color:var(--ink);
+  }
+  .hint{
+    font-size:12px;
+    color:var(--muted);
+    margin-top:2px;
+  }
+  input[type="date"],
+  input[type="text"],
+  input[type="number"]{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:15px;
+    padding:11px 12px;
+    border:1px solid var(--line);
+    border-radius:3px;
+    background:var(--paper);
+    color:var(--ink);
+    width:100%;
+  }
+  input:focus{
+    outline:none;
+    border-color:var(--moss-deep);
+    box-shadow:0 0 0 1px var(--moss-deep);
+  }
+  .unit-input{position:relative;}
+  .unit-input input{padding-right:42px;}
+  .unit-suffix{
+    position:absolute;
+    right:12px;top:50%;
+    transform:translateY(-50%);
+    font-size:13px;
+    color:var(--muted);
+    font-family:'IBM Plex Mono',monospace;
+    pointer-events:none;
+  }
+
+  .advanced-toggle{
+    margin-top:28px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    cursor:pointer;
+    font-size:13px;
+    color:var(--moss-deep);
+    font-weight:500;
+    width:fit-content;
+  }
+  .advanced-toggle .chevron{
+    transition:transform 0.2s ease;
+    font-size:11px;
+  }
+  .advanced-toggle.open .chevron{transform:rotate(90deg);}
+  .advanced-fields{
+    display:none;
+    margin-top:20px;
+    padding-top:20px;
+    border-top:1px dashed var(--line);
+  }
+  .advanced-fields.show{display:block;}
+
+  button.calc-btn{
+    margin-top:32px;
+    width:100%;
+    padding:16px;
+    background:var(--moss-deep);
+    color:var(--paper);
+    border:none;
+    border-radius:3px;
+    font-family:'IBM Plex Sans KR',sans-serif;
+    font-size:16px;
+    font-weight:600;
+    cursor:pointer;
+    transition:background 0.15s ease;
+  }
+  button.calc-btn:hover{background:#1f2e22;}
+  button.calc-btn:active{transform:translateY(1px);}
+
+  /* Result */
+  .result{
+    display:none;
+    margin-top:40px;
+  }
+  .result.show{display:block;}
+  .result-headline{
+    background:var(--moss-deep);
+    color:var(--paper);
+    padding:32px 28px;
+    border-radius:4px;
+  }
+  .result-label{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    opacity:0.75;
+    margin:0 0 8px;
+  }
+  .result-amount{
+    font-family:'Source Serif 4',serif;
+    font-size:44px;
+    font-weight:600;
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+  .result-amount .won{font-size:24px;font-weight:500;margin-left:6px;opacity:0.85;}
+
+  .breakdown{
+    margin-top:20px;
+    border:1px solid var(--line);
+    border-radius:4px;
+    overflow:hidden;
+  }
+  .b-row{
+    display:flex;
+    justify-content:space-between;
+    padding:13px 20px;
+    font-size:14px;
+    border-bottom:1px solid var(--line);
+  }
+  .b-row:last-child{border-bottom:none;}
+  .b-row.total{
+    background:var(--paper-2);
+    font-weight:600;
+  }
+  .b-row .k{color:var(--muted);}
+  .b-row .v{font-family:'IBM Plex Mono',monospace;}
+  .b-row.flag .v{color:var(--rust);}
+
+  .note-box{
+    margin-top:16px;
+    padding:16px 18px;
+    background:var(--paper-2);
+    border-left:3px solid var(--gold);
+    font-size:13px;
+    color:var(--muted);
+    border-radius:0 4px 4px 0;
+  }
+  .note-box strong{color:var(--ink);}
+
+  /* Disclaimer */
+  .disclaimer{
+    margin-top:56px;
+    padding-top:24px;
+    border-top:1px solid var(--line);
+    font-size:12.5px;
+    color:var(--muted);
+    line-height:1.7;
+  }
+  .disclaimer p{margin:0 0 8px;}
+
+  footer{
+    margin-top:40px;
+    padding-top:20px;
+    border-top:1px solid var(--line-strong);
+    display:flex;
+    justify-content:space-between;
+    font-size:12px;
+    color:var(--muted);
+    flex-wrap:wrap;
+    gap:8px;
+  }
+
+  @media (max-width:560px){
+    h1{font-size:32px;}
+    .field-grid{grid-template-columns:1fr;}
+    .result-amount{font-size:34px;}
+  }
+
+  .visually-hidden{
+    position:absolute;width:1px;height:1px;
+    overflow:hidden;clip:rect(0,0,0,0);
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="masthead">
+      <span class="brand">근로 계산 도구</span>
+      <span class="date" id="todayDate"></span>
+    </div>
+    <h1>퇴직금 계산기</h1>
+    <p class="lede">입사일과 퇴사일, 최근 3개월 임금만 입력하면 근로기준법 기준 평균임금과 예상 퇴직금을 계산합니다.</p>
+  </header>
+
+  <section>
+    <p class="eyebrow">정보 입력</p>
+    <div class="field-grid">
+      <div class="field">
+        <label for="hireDate">입사일</label>
+        <input type="date" id="hireDate">
+      </div>
+      <div class="field">
+        <label for="resignDate">퇴사일</label>
+        <input type="date" id="resignDate">
+      </div>
+      <div class="field full">
+        <label for="recent3m">퇴직 전 3개월간 받은 임금 총액</label>
+        <div class="unit-input">
+          <input type="text" id="recent3m" inputmode="numeric" placeholder="예: 12000000">
+          <span class="unit-suffix">원</span>
+        </div>
+        <p class="hint">기본급 + 각종 수당(식대, 직책수당 등 정기적으로 받는 금액) 포함, 비과세 항목은 제외</p>
+      </div>
+      <div class="field">
+        <label for="monthlySalary">월 통상임금</label>
+        <div class="unit-input">
+          <input type="text" id="monthlySalary" inputmode="numeric" placeholder="예: 4000000">
+          <span class="unit-suffix">원</span>
+        </div>
+        <p class="hint">근로계약상 월급 기준액</p>
+      </div>
+    </div>
+
+    <div class="advanced-toggle" id="advToggle">
+      <span class="chevron">▸</span>
+      <span>상여금·연차수당 반영 (선택)</span>
+    </div>
+
+    <div class="advanced-fields" id="advFields">
+      <div class="field-grid">
+        <div class="field">
+          <label for="bonus">최근 1년간 상여금 총액</label>
+          <div class="unit-input">
+            <input type="text" id="bonus" inputmode="numeric" placeholder="예: 3000000">
+            <span class="unit-suffix">원</span>
+          </div>
+          <p class="hint">1년치 중 3개월분(1/4)만 평균임금에 반영됩니다</p>
+        </div>
+        <div class="field">
+          <label for="leavePay">최근 1년간 미사용 연차수당</label>
+          <div class="unit-input">
+            <input type="text" id="leavePay" inputmode="numeric" placeholder="예: 600000">
+            <span class="unit-suffix">원</span>
+          </div>
+          <p class="hint">퇴직 전년도 발생분 기준, 3개월분만 반영</p>
+        </div>
+      </div>
+    </div>
+
+    <button class="calc-btn" id="calcBtn">퇴직금 계산하기</button>
+  </section>
+
+  <section class="result" id="resultSection">
+    <p class="eyebrow">계산 결과</p>
+    <div class="result-headline">
+      <p class="result-label">예상 퇴직금</p>
+      <p class="result-amount"><span id="resultAmount">0</span><span class="won">원</span></p>
+    </div>
+
+    <div class="breakdown" id="breakdownTable"></div>
+
+    <div class="note-box" id="noteBox"></div>
+  </section>
+
+  <div class="disclaimer">
+    <p><strong>참고용 계산입니다.</strong> 본 계산기는 근로자퇴직급여 보장법 제8조 및 근로기준법 제2조에 따른 일반적 산정 방식을 따르며, 회사의 취업규칙이나 단체협약, 비과세 항목 처리 방식에 따라 실제 지급액과 차이가 발생할 수 있습니다.</p>
+    <p>휴직, 육아휴직, 수습기간 등 평균임금 산정 제외기간이 있는 경우 정확한 계산을 위해 고용노동부 또는 사업장 인사담당자에게 문의하시기 바랍니다.</p>
+  </div>
+
+  <footer>
+    <span>근로 계산 도구</span>
+    <span>법적 효력 없음 · 참고용</span>
+  </footer>
+
+</div>
+
+<script>
+  document.getElementById('todayDate').textContent = new Date().toLocaleDateString('ko-KR', { year:'numeric', month:'long', day:'numeric' });
+
+  // Advanced toggle
+  const advToggle = document.getElementById('advToggle');
+  const advFields = document.getElementById('advFields');
+  advToggle.addEventListener('click', () => {
+    advToggle.classList.toggle('open');
+    advFields.classList.toggle('show');
+  });
+
+  // Number formatting helper
+  function formatNumberInput(el){
+    el.addEventListener('input', () => {
+      const raw = el.value.replace(/[^0-9]/g, '');
+      el.value = raw ? Number(raw).toLocaleString('ko-KR') : '';
+    });
+  }
+  ['recent3m','monthlySalary','bonus','leavePay'].forEach(id => formatNumberInput(document.getElementById(id)));
+
+  function parseNum(id){
+    const v = document.getElementById(id).value.replace(/[^0-9]/g, '');
+    return v ? Number(v) : 0;
+  }
+
+  function daysBetween(d1, d2){
+    const ms = d2.getTime() - d1.getTime();
+    return Math.floor(ms / (1000*60*60*24)) + 1; // inclusive
+  }
+
+  document.getElementById('calcBtn').addEventListener('click', () => {
+    const hireStr = document.getElementById('hireDate').value;
+    const resignStr = document.getElementById('resignDate').value;
+    const recent3m = parseNum('recent3m');
+    const monthlySalary = parseNum('monthlySalary');
+    const bonus = parseNum('bonus');
+    const leavePay = parseNum('leavePay');
+
+    if(!hireStr || !resignStr || !recent3m){
+      alert('입사일, 퇴사일, 최근 3개월 임금 총액을 입력해주세요.');
+      return;
+    }
+
+    const hireDate = new Date(hireStr);
+    const resignDate = new Date(resignStr);
+
+    if(resignDate <= hireDate){
+      alert('퇴사일은 입사일보다 늦어야 합니다.');
+      return;
+    }
+
+    const totalServiceDays = daysBetween(hireDate, resignDate);
+    if(totalServiceDays < 365){
+      document.getElementById('resultSection').classList.add('show');
+      document.getElementById('breakdownTable').innerHTML = '';
+      document.getElementById('resultAmount').textContent = '0';
+      document.getElementById('noteBox').innerHTML = '<strong>지급 대상이 아닙니다.</strong> 퇴직금은 계속근로기간이 1년 이상인 근로자에게 지급됩니다. 현재 재직기간은 약 ' + totalServiceDays + '일(1년 미만)입니다.';
+      document.getElementById('resultSection').scrollIntoView({behavior:'smooth', block:'start'});
+      return;
+    }
+
+    // 최근 3개월 실제 일수 계산 (퇴직일 기준 이전 3개월)
+    const threeMonthsAgo = new Date(resignDate);
+    threeMonthsAgo.setMonth(threeMonthsAgo.getMonth() - 3);
+    const periodDays = daysBetween(threeMonthsAgo, resignDate);
+
+    // 상여금/연차수당의 3개월분 반영 (1년치의 1/4, 일할 계산 시 3/12)
+    const bonusPortion = bonus * (3/12);
+    const leavePortion = leavePay * (3/12);
+
+    const totalWageForPeriod = recent3m + bonusPortion + leavePortion;
+    const averageDailyWage = totalWageForPeriod / periodDays;
+
+    // 통상임금 비교 (통상임금의 일급 = 월급/30 정도로 근사, 더 큰 값 채택)
+    const ordinaryDailyWage = monthlySalary ? (monthlySalary / 30) : 0;
+    const baseDailyWage = Math.max(averageDailyWage, ordinaryDailyWage);
+    const usedOrdinary = ordinaryDailyWage > averageDailyWage;
+
+    const severance = Math.round(baseDailyWage * 30 * (totalServiceDays / 365));
+
+    // Render
+    document.getElementById('resultAmount').textContent = severance.toLocaleString('ko-KR');
+
+    const years = Math.floor(totalServiceDays / 365);
+    const remDays = totalServiceDays % 365;
+    const months = Math.floor(remDays / 30);
+
+    const rows = [
+      ['총 재직기간', years + '년 ' + months + '개월 (' + totalServiceDays.toLocaleString('ko-KR') + '일)'],
+      ['평균임금 산정기간 일수', periodDays + '일'],
+      ['1일 평균임금', Math.round(averageDailyWage).toLocaleString('ko-KR') + '원'],
+    ];
+    if(ordinaryDailyWage > 0){
+      rows.push(['1일 통상임금', Math.round(ordinaryDailyWage).toLocaleString('ko-KR') + '원']);
+    }
+    rows.push(['적용 기준', usedOrdinary ? '통상임금 적용' : '평균임금 적용']);
+
+    document.getElementById('breakdownTable').innerHTML = rows.map((r,i) => {
+      const flagClass = (r[0]==='적용 기준') ? 'flag' : '';
+      return '<div class="b-row ' + flagClass + '"><span class="k">' + r[0] + '</span><span class="v">' + r[1] + '</span></div>';
+    }).join('') + '<div class="b-row total"><span class="k">예상 퇴직금</span><span class="v">' + severance.toLocaleString('ko-KR') + '원</span></div>';
+
+    let note = '';
+    if(usedOrdinary){
+      note += '<strong>통상임금 기준으로 계산되었습니다.</strong> 산정된 평균임금이 통상임금보다 낮아 근로기준법에 따라 더 높은 통상임금을 기준으로 적용했습니다. ';
+    } else {
+      note += '<strong>평균임금 기준으로 계산되었습니다.</strong> ';
+    }
+    note += '실제 지급액은 회사의 임금체계, 비과세 항목 처리, 휴직기간 제외 여부 등에 따라 달라질 수 있습니다.';
+    document.getElementById('noteBox').innerHTML = note;
+
+    document.getElementById('resultSection').classList.add('show');
+    document.getElementById('resultSection').scrollIntoView({behavior:'smooth', block:'start'});
+  });
+</script>
+</body>
+</html>
