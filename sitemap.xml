@@ -21,6 +21,30 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://severance-calculator-pi.vercel.app/unemployment-benefit-guide.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://severance-calculator-pi.vercel.app/pension-db-dc-guide.html</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://severance-calculator-pi.vercel.app/four-major-insurance-guide.html</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://severance-calculator-pi.vercel.app/severance-tax-guide.html</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://severance-calculator-pi.vercel.app/voluntary-vs-involuntary-resignation-guide.html</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://severance-calculator-pi.vercel.app/average-vs-ordinary-wage-guide.html</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://severance-calculator-pi.vercel.app/contact.html</loc>
     <priority>0.3</priority>
   </url>

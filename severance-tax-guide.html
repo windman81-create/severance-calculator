@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>퇴직소득세 계산 방법과 절세 방법 — 근로 계산 도구</title>
+<meta name="description" content="퇴직소득세 계산 구조, 근속연수공제, IRP 이전 시 절세 효과까지 국세청 기준으로 정리했습니다.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1C1B18; --paper:#FAF8F3; --paper-2:#F1EEE6;
+    --line:#D8D3C5; --line-strong:#1C1B18;
+    --moss-deep:#283B2B; --rust:#A8472B; --gold:#9C7A2C; --muted:#6B6658;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{background:var(--paper);color:var(--ink);font-family:'IBM Plex Sans KR',sans-serif;line-height:1.75;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:720px;margin:0 auto;padding:0 24px 80px;}
+  header{border-bottom:1px solid var(--line-strong);padding:32px 0 24px;margin-bottom:8px;}
+  .masthead{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;}
+  .brand{font-family:'Source Serif 4',serif;font-size:15px;letter-spacing:0.12em;color:var(--muted);text-transform:uppercase;}
+  .brand a{color:inherit;text-decoration:none;}
+  nav.crumbs{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted);}
+  nav.crumbs a{color:var(--moss-deep);text-decoration:none;}
+  .eyebrow{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--moss-deep);margin:18px 0 10px;}
+  h1{font-family:'Source Serif 4',serif;font-weight:600;font-size:34px;margin:0 0 10px;letter-spacing:-0.01em;line-height:1.25;}
+  .lede{font-size:16px;color:var(--muted);margin:0;}
+  .updated{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted);margin:10px 0 0;}
+  section{margin-top:40px;}
+  h2{font-family:'Source Serif 4',serif;font-weight:600;font-size:22px;margin:0 0 14px;border-bottom:1px solid var(--line);padding-bottom:10px;}
+  h3{font-family:'IBM Plex Sans KR',sans-serif;font-weight:600;font-size:16px;margin:24px 0 10px;}
+  p{margin:0 0 16px;font-size:15.5px;}
+  ul,ol{margin:0 0 16px;padding-left:22px;}
+  li{font-size:15.5px;margin-bottom:8px;}
+  strong{font-weight:600;}
+  table{width:100%;border-collapse:collapse;margin:16px 0 24px;font-size:14px;}
+  th,td{border:1px solid var(--line);padding:10px 14px;text-align:left;}
+  th{background:var(--paper-2);font-weight:600;}
+  .callout{
+    background:var(--paper-2);
+    border-left:3px solid var(--gold);
+    padding:18px 20px;
+    border-radius:0 4px 4px 0;
+    margin:20px 0;
+    font-size:14.5px;
+  }
+  .callout strong{color:var(--ink);}
+  .cta{
+    margin-top:40px;
+    padding:24px;
+    background:var(--moss-deep);
+    border-radius:6px;
+    text-align:center;
+  }
+  .cta p{color:#E8E5DA;margin:0 0 12px;font-size:15px;}
+  .cta a{
+    display:inline-block;
+    background:var(--paper);
+    color:var(--moss-deep);
+    padding:11px 24px;
+    border-radius:3px;
+    text-decoration:none;
+    font-weight:600;
+    font-size:14px;
+  }
+  footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--line-strong);display:flex;justify-content:space-between;font-size:12px;color:var(--muted);flex-wrap:wrap;gap:8px;}
+  footer a{color:var(--muted);text-decoration:none;margin-left:12px;}
+  footer a:hover{color:var(--moss-deep);}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="masthead">
+      <span class="brand"><a href="/">근로 계산 도구</a></span>
+      <nav class="crumbs"><a href="/">홈</a> / 퇴직소득세 계산</nav>
+    </div>
+    <p class="eyebrow">근로 정보</p>
+    <h1>퇴직소득세, 얼마나 떼이고 어떻게 줄일 수 있을까</h1>
+    <p class="lede">퇴직금에도 세금이 붙지만, 근속연수가 길수록 공제가 커지고 수령 방법에 따라 세금이 크게 달라집니다. 계산 구조와 절세 방법을 정리했습니다.</p>
+    <p class="updated">최종 수정일: 2026년 6월 18일</p>
+  </header>
+
+  <section>
+    <h2>퇴직소득세의 기본 성격</h2>
+    <p>퇴직소득세는 일반 근로소득세와 별도로 <strong>분리과세</strong>되는 국세입니다. 연봉이 높아도 퇴직금 세금은 따로 계산되며, 오랜 기간 쌓인 소득을 한 번에 과세하면 세율이 지나치게 높아지는 것을 막기 위해 근속연수공제와 환산급여공제라는 특수한 방식으로 부담을 완화합니다.</p>
+  </section>
+
+  <section>
+    <h2>근속연수공제, 오래 일할수록 유리</h2>
+    <p>퇴직소득세 부담을 줄이는 핵심은 근속연수공제입니다. 근무 기간에 따라 공제율이 차등 적용됩니다.</p>
+    <table>
+      <tr><th>근속연수</th><th>공제율</th></tr>
+      <tr><td>5년 이하</td><td>30%</td></tr>
+      <tr><td>10년 이하</td><td>40%</td></tr>
+      <tr><td>20년 이하</td><td>50%</td></tr>
+      <tr><td>20년 초과</td><td>60%</td></tr>
+    </table>
+    <p>근속연수가 길수록 공제율이 높아져 세금 부담이 줄어드는 구조입니다.</p>
+  </section>
+
+  <section>
+    <h2>계산 구조</h2>
+    <ol>
+      <li><strong>퇴직소득금액</strong> = 퇴직급여액 − 비과세 소득</li>
+      <li><strong>환산급여</strong> = (퇴직소득금액 − 근속연수공제) ÷ 근속연수 × 12</li>
+      <li><strong>퇴직소득과세표준</strong> = 환산급여 − 환산급여공제</li>
+      <li><strong>퇴직소득산출세액</strong> = 과세표준에 6~45% 누진세율 적용 ÷ 12 × 근속연수</li>
+      <li>최종 납부세액 = 산출세액 + 지방소득세(소득세의 10%)</li>
+    </ol>
+    <p>오랜 기간의 퇴직소득을 1년 치 수준으로 환산해 세율을 적용한 뒤 다시 근속연수를 곱하는 '연분연승' 방식이라, 계산 과정이 복잡합니다. 정확한 금액은 국세청 홈택스의 퇴직소득세 모의계산 기능을 이용하는 것이 가장 정확합니다.</p>
+  </section>
+
+  <section>
+    <h2>IRP로 이전하면 세금을 줄일 수 있다</h2>
+    <p>퇴직금을 일시금으로 바로 받지 않고 개인형 퇴직연금(IRP) 계좌로 이전해 연금으로 수령하면, 퇴직소득세 과세 자체가 뒤로 미뤄지는 <strong>과세이연</strong> 효과를 받습니다.</p>
+    <ul>
+      <li>연금으로 수령하면 퇴직소득세의 <strong>30%를 감면</strong>받습니다.</li>
+      <li>연금 수령 기간이 10년을 초과하면 <strong>40%까지 감면</strong>받을 수 있습니다.</li>
+      <li>회사가 퇴직금을 IRP 계좌로 직접 입금해주면 퇴직소득세를 내지 않고 과세가 이연되며, 이후 연금으로 인출할 때 더 낮은 세율로 과세됩니다.</li>
+    </ul>
+    <div class="callout">
+      <strong>참고</strong> — 퇴직소득은 분류과세 대상이라 건강보험료나 국민연금 등 사회보험료 산정 기준 소득에는 포함되지 않습니다. IRP 계좌는 퇴직 전에 미리 개설해두면 절차가 간편합니다.
+    </div>
+  </section>
+
+  <section>
+    <h2>중간정산 이력이 있다면</h2>
+    <p>중간정산을 받은 적이 있다면, 최종 퇴직 시 기존 정산 이력을 합산해 전체 기간에 대한 세액을 다시 계산한 후, 이미 납부했던 세액을 차감하는 정산 체계를 거치게 됩니다. 근속연수 계산 시 중간정산 시점과 최종 퇴직 시점을 정확히 구분해야 공제 구간이 달라질 수 있으므로, 인사팀에 정확한 근속연수를 확인하는 것이 중요합니다.</p>
+  </section>
+
+  <div class="cta">
+    <p>세금 떼기 전, 받을 퇴직금이 얼마인지 먼저 계산해보세요.</p>
+    <a href="/">퇴직금 계산기 바로 가기</a>
+  </div>
+
+  <footer>
+    <span>근로 계산 도구</span>
+    <span><a href="/">홈</a><a href="/privacy.html">개인정보처리방침</a><a href="/terms.html">이용약관</a><a href="/contact.html">문의하기</a></span>
+  </footer>
+</div>
+</body>
+</html>

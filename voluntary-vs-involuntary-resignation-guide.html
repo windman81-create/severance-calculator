@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>권고사직 vs 자진퇴사, 실업급여와 퇴직금 차이 — 근로 계산 도구</title>
+<meta name="description" content="권고사직과 자진퇴사, 해고의 차이점부터 각각의 실업급여 수급 가능성과 퇴직금 처리까지 비교했습니다.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1C1B18; --paper:#FAF8F3; --paper-2:#F1EEE6;
+    --line:#D8D3C5; --line-strong:#1C1B18;
+    --moss-deep:#283B2B; --rust:#A8472B; --gold:#9C7A2C; --muted:#6B6658;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{background:var(--paper);color:var(--ink);font-family:'IBM Plex Sans KR',sans-serif;line-height:1.75;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:720px;margin:0 auto;padding:0 24px 80px;}
+  header{border-bottom:1px solid var(--line-strong);padding:32px 0 24px;margin-bottom:8px;}
+  .masthead{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;}
+  .brand{font-family:'Source Serif 4',serif;font-size:15px;letter-spacing:0.12em;color:var(--muted);text-transform:uppercase;}
+  .brand a{color:inherit;text-decoration:none;}
+  nav.crumbs{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted);}
+  nav.crumbs a{color:var(--moss-deep);text-decoration:none;}
+  .eyebrow{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--moss-deep);margin:18px 0 10px;}
+  h1{font-family:'Source Serif 4',serif;font-weight:600;font-size:34px;margin:0 0 10px;letter-spacing:-0.01em;line-height:1.25;}
+  .lede{font-size:16px;color:var(--muted);margin:0;}
+  .updated{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted);margin:10px 0 0;}
+  section{margin-top:40px;}
+  h2{font-family:'Source Serif 4',serif;font-weight:600;font-size:22px;margin:0 0 14px;border-bottom:1px solid var(--line);padding-bottom:10px;}
+  h3{font-family:'IBM Plex Sans KR',sans-serif;font-weight:600;font-size:16px;margin:24px 0 10px;}
+  p{margin:0 0 16px;font-size:15.5px;}
+  ul,ol{margin:0 0 16px;padding-left:22px;}
+  li{font-size:15.5px;margin-bottom:8px;}
+  strong{font-weight:600;}
+  table{width:100%;border-collapse:collapse;margin:16px 0 24px;font-size:14px;}
+  th,td{border:1px solid var(--line);padding:10px 14px;text-align:left;}
+  th{background:var(--paper-2);font-weight:600;}
+  .callout{
+    background:var(--paper-2);
+    border-left:3px solid var(--gold);
+    padding:18px 20px;
+    border-radius:0 4px 4px 0;
+    margin:20px 0;
+    font-size:14.5px;
+  }
+  .callout strong{color:var(--ink);}
+  .cta{
+    margin-top:40px;
+    padding:24px;
+    background:var(--moss-deep);
+    border-radius:6px;
+    text-align:center;
+  }
+  .cta p{color:#E8E5DA;margin:0 0 12px;font-size:15px;}
+  .cta a{
+    display:inline-block;
+    background:var(--paper);
+    color:var(--moss-deep);
+    padding:11px 24px;
+    border-radius:3px;
+    text-decoration:none;
+    font-weight:600;
+    font-size:14px;
+  }
+  footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--line-strong);display:flex;justify-content:space-between;font-size:12px;color:var(--muted);flex-wrap:wrap;gap:8px;}
+  footer a{color:var(--muted);text-decoration:none;margin-left:12px;}
+  footer a:hover{color:var(--moss-deep);}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="masthead">
+      <span class="brand"><a href="/">근로 계산 도구</a></span>
+      <nav class="crumbs"><a href="/">홈</a> / 권고사직 vs 자진퇴사</nav>
+    </div>
+    <p class="eyebrow">근로 정보</p>
+    <h1>권고사직, 자진퇴사, 해고 — 실업급여와 퇴직금은 어떻게 다를까</h1>
+    <p class="lede">퇴사 형태에 따라 실업급여를 받을 수 있는지가 크게 달라집니다. 세 가지 퇴사 유형의 차이와 각각의 처리 방법을 정리했습니다.</p>
+    <p class="updated">최종 수정일: 2026년 6월 18일</p>
+  </header>
+
+  <section>
+    <h2>세 가지 퇴사 유형 한눈에 비교</h2>
+    <table>
+      <tr><th>구분</th><th>의미</th><th>실업급여</th></tr>
+      <tr><td>자진퇴사</td><td>근로자 스스로 사직서를 제출하고 퇴사</td><td>원칙적으로 불가, 정당한 사유 시 예외</td></tr>
+      <tr><td>권고사직</td><td>회사의 권유로 근로자가 사직서를 제출</td><td>가능 (비자발적 이직으로 분류)</td></tr>
+      <tr><td>해고</td><td>회사가 근로자의 의사와 무관하게 근로관계를 종료</td><td>가능 (단, 중대한 귀책사유로 해고된 경우는 제외)</td></tr>
+    </table>
+    <p>퇴직금은 세 가지 유형 모두 계속근로기간 1년 이상이라는 조건만 충족하면 동일하게 지급됩니다. 차이가 발생하는 부분은 실업급여입니다.</p>
+  </section>
+
+  <section>
+    <h2>권고사직, 자발적인 것 같지만 실업급여를 받을 수 있는 이유</h2>
+    <p>권고사직은 형식적으로 근로자가 사직서를 제출하는 자발적 퇴사처럼 보이지만, 실제로는 회사가 퇴사를 권유한 것이기 때문에 <strong>비자발적 이직으로 분류</strong>되어 실업급여를 받을 수 있습니다. 회사의 경영상 어려움이나 인력 조정 과정에서 흔히 발생하는 형태입니다.</p>
+  </section>
+
+  <section>
+    <h2>권고사직과 해고, 무엇이 다를까</h2>
+    <p>둘 다 회사의 의사가 개입된다는 공통점이 있지만, 법적 성격은 다릅니다.</p>
+    <ul>
+      <li><strong>해고</strong> — 근로자에게 책임이 있거나 경영상 필요가 있는 정당한 사유가 있어야 하며, 해고일로부터 30일 전에 예고해야 합니다. 정당한 사유 없이 해고하면 부당해고에 해당합니다.</li>
+      <li><strong>권고사직</strong> — 회사가 퇴사를 권유하고 근로자가 이를 받아들여 사직서를 제출하는 형태로, 해고와 같은 절차적 요건은 없습니다.</li>
+    </ul>
+    <p>회사 입장에서는 해고보다 권고사직을 선호하는 경우가 많은데, 부당해고 분쟁 위험을 줄이면서도 인력을 조정할 수 있기 때문입니다. 근로자 입장에서는 권고사직을 받아들이기 전에 위로금, 퇴직금 정산 조건 등을 미리 확인하고 협의하는 것이 중요합니다.</p>
+  </section>
+
+  <section>
+    <h2>자진퇴사인데 실업급여를 받을 수 있는 경우</h2>
+    <p>자진퇴사라도 다음과 같은 정당한 사유가 인정되면 예외적으로 실업급여를 받을 수 있습니다.</p>
+    <ul>
+      <li>이직일 전 1년 이내 2개월 이상 임금이 체불된 경우</li>
+      <li>채용 시 제시된 근로조건보다 실제 근로조건이 현저히 낮아진 경우</li>
+      <li>사업장 이전 등으로 출퇴근 왕복 시간이 3시간 이상 소요되는 경우</li>
+      <li>직장 내 괴롭힘이나 성희롱을 당한 경우</li>
+      <li>질병·부상으로 휴직을 요청했지만 회사가 허용하지 않은 경우</li>
+      <li>육아휴직을 요청했지만 회사가 허용하지 않은 경우</li>
+    </ul>
+    <div class="callout">
+      <strong>증빙이 핵심</strong> — 이런 사유들은 객관적으로 입증할 수 있는 자료가 반드시 필요합니다. 휴가나 휴직을 요청했다는 이메일, 공문, 문자 기록 등을 미리 남겨두어야 인정받을 가능성이 높아집니다. 최종 판단은 관할 고용센터가 합니다.
+    </div>
+  </section>
+
+  <section>
+    <h2>퇴사 전 확인해야 할 것</h2>
+    <p>퇴사 형태를 협의하는 단계에 있다면, 다음 사항을 미리 확인하고 기록으로 남겨두는 것이 좋습니다.</p>
+    <ul>
+      <li>사직서에 퇴사 사유를 어떻게 기재할 것인지 (특히 권고사직이라면 "회사 권고에 의한 퇴사"임을 명시)</li>
+      <li>퇴직금과 미사용 연차수당 정산 일정</li>
+      <li>이직확인서에 기재될 이직 사유 (회사가 임의로 자진퇴사로 처리하면 실업급여 수급에 불리할 수 있음)</li>
+    </ul>
+  </section>
+
+  <div class="cta">
+    <p>퇴사 형태와 관계없이 받을 퇴직금부터 계산해보세요.</p>
+    <a href="/">퇴직금 계산기 바로 가기</a>
+  </div>
+
+  <footer>
+    <span>근로 계산 도구</span>
+    <span><a href="/">홈</a><a href="/privacy.html">개인정보처리방침</a><a href="/terms.html">이용약관</a><a href="/contact.html">문의하기</a></span>
+  </footer>
+</div>
+</body>
+</html>
