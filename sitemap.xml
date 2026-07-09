@@ -85,6 +85,10 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://severance-calculator-pi.vercel.app/part-time-severance-guide.html</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://severance-calculator-pi.vercel.app/privacy.html</loc>
     <priority>0.2</priority>
   </url>
