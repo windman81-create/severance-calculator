@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5828156324521706"
+     crossorigin="anonymous"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>임원 퇴직금, 일반 직원과 어떻게 다를까 — 근로 계산 도구</title>
+<meta name="description" content="등기임원과 비등기임원의 퇴직금 지급 근거 차이, 법인세법상 손금산입 한도와 소득세법상 퇴직소득 인정 한도까지 실제 숫자로 정리했습니다.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1C1B18; --paper:#FAF8F3; --paper-2:#F1EEE6;
+    --line:#D8D3C5; --line-strong:#1C1B18;
+    --moss-deep:#283B2B; --rust:#A8472B; --gold:#9C7A2C; --muted:#6B6658;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{background:var(--paper);color:var(--ink);font-family:'IBM Plex Sans KR',sans-serif;line-height:1.75;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:720px;margin:0 auto;padding:0 24px 80px;}
+  header{border-bottom:1px solid var(--line-strong);padding:32px 0 24px;margin-bottom:8px;}
+  .masthead{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;}
+  .brand{font-family:'Source Serif 4',serif;font-size:15px;letter-spacing:0.12em;color:var(--muted);text-transform:uppercase;}
+  .brand a{color:inherit;text-decoration:none;}
+  nav.crumbs{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted);}
+  nav.crumbs a{color:var(--moss-deep);text-decoration:none;}
+  .eyebrow{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--moss-deep);margin:18px 0 10px;}
+  h1{font-family:'Source Serif 4',serif;font-weight:600;font-size:34px;margin:0 0 10px;letter-spacing:-0.01em;line-height:1.25;}
+  .lede{font-size:16px;color:var(--muted);margin:0;}
+  .updated{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted);margin:10px 0 0;}
+  section{margin-top:40px;}
+  h2{font-family:'Source Serif 4',serif;font-weight:600;font-size:22px;margin:0 0 14px;border-bottom:1px solid var(--line);padding-bottom:10px;}
+  h3{font-family:'IBM Plex Sans KR',sans-serif;font-weight:600;font-size:16px;margin:24px 0 10px;}
+  p{margin:0 0 16px;font-size:15.5px;}
+  ul,ol{margin:0 0 16px;padding-left:22px;}
+  li{font-size:15.5px;margin-bottom:8px;}
+  strong{font-weight:600;}
+  table{width:100%;border-collapse:collapse;margin:16px 0 24px;font-size:14px;}
+  th,td{border:1px solid var(--line);padding:10px 14px;text-align:left;}
+  th{background:var(--paper-2);font-weight:600;}
+  .callout{
+    background:var(--paper-2);
+    border-left:3px solid var(--gold);
+    padding:18px 20px;
+    border-radius:0 4px 4px 0;
+    margin:20px 0;
+    font-size:14.5px;
+  }
+  .callout strong{color:var(--ink);}
+  .cta{
+    margin-top:40px;
+    padding:24px;
+    background:var(--moss-deep);
+    border-radius:6px;
+    text-align:center;
+  }
+  .cta p{color:#E8E5DA;margin:0 0 12px;font-size:15px;}
+  .cta a{
+    display:inline-block;
+    background:var(--paper);
+    color:var(--moss-deep);
+    padding:11px 24px;
+    border-radius:3px;
+    text-decoration:none;
+    font-weight:600;
+    font-size:14px;
+  }
+  footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--line-strong);display:flex;justify-content:space-between;font-size:12px;color:var(--muted);flex-wrap:wrap;gap:8px;}
+  footer a{color:var(--muted);text-decoration:none;margin-left:12px;}
+  footer a:hover{color:var(--moss-deep);}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="masthead">
+      <span class="brand"><a href="/">근로 계산 도구</a></span>
+      <nav class="crumbs"><a href="/">홈</a> / 임원 퇴직금</nav>
+    </div>
+    <p class="eyebrow">근로 정보</p>
+    <h1>임원 퇴직금, 일반 직원과 무엇이 다를까</h1>
+    <p class="lede">대표이사나 등기임원은 근로기준법이 아니라 정관과 법인세법·소득세법의 별도 규정을 따릅니다. 지급 근거부터 세법상 한도까지 실제 숫자로 정리했습니다.</p>
+    <p class="updated">최종 수정일: 2026년 7월 16일</p>
+  </header>
+
+  <section>
+    <h2>결론: 임원은 근로기준법이 아니라 정관을 따릅니다</h2>
+    <p>일반 직원의 퇴직금은 근로자퇴직급여 보장법에 따라 근속 1년 이상이면 자동으로 발생합니다. 하지만 <strong>등기임원(이사회 구성원, 대표이사, 감사 등)</strong>은 회사와 위임 관계에 있는 것으로 보아 근로기준법상 근로자로 보지 않기 때문에, 이 법이 그대로 적용되지 않습니다.</p>
+    <div class="callout">
+      <strong>핵심</strong> — 등기임원의 퇴직금은 <strong>정관에 정해진 금액</strong>, 또는 <strong>정관에서 위임한 퇴직급여지급규정</strong>에 따라 지급됩니다. 정관이나 규정이 아예 없다면 법인세법이 정한 한도액을 기준으로 계산합니다. "대표이사니까 알아서 정해서 받으면 된다"는 방식은 세무상 문제를 일으킬 수 있습니다.
+    </div>
+  </section>
+
+  <section>
+    <h2>등기임원 vs 비등기임원, 헷갈리지 않게</h2>
+    <p>"임원"이라는 직함이 붙어도 실제 적용되는 규정은 등기 여부에 따라 완전히 달라집니다.</p>
+    <table>
+      <tr><th>구분</th><th>적용 규정</th><th>퇴직금 발생 근거</th></tr>
+      <tr><td>등기임원 (이사, 대표이사, 감사 등 등기부에 등재)</td><td>정관 + 법인세법 + 소득세법</td><td>정관 규정 또는 법인세법상 한도 계산식</td></tr>
+      <tr><td>비등기임원 (이사 직함이지만 등기부 미등재, 실질은 근로자)</td><td>근로기준법 + 근로자퇴직급여 보장법</td><td>일반 직원과 동일하게 근속 1년 이상 시 자동 발생</td></tr>
+    </table>
+    <p>실무에서는 "이사", "상무", "전무" 같은 직함만 보고 등기임원으로 오해하는 경우가 많은데, 실제로 회사 등기부등본에 이름이 올라가 있는지가 기준입니다. 직함과 무관하게 등기되어 있지 않다면 근로자에 가깝게 판단됩니다.</p>
+  </section>
+
+  <section>
+    <h2>지급 근거 — 정관과 주주총회 결의</h2>
+    <p>등기임원의 퇴직금은 아래 우선순위로 결정됩니다.</p>
+    <ol>
+      <li><strong>정관에 퇴직급여로 지급할 금액이 직접 정해진 경우</strong> — 그 금액이 그대로 기준이 됩니다.</li>
+      <li><strong>정관에서 위임한 임원 퇴직급여지급규정이 따로 있는 경우</strong> — 주주총회에서 적법하게 결의된 규정에 따른 금액이 기준이 됩니다.</li>
+      <li><strong>정관에도 위임 규정에도 아무것도 없는 경우</strong> — 법인세법 시행령이 정한 법정 한도액으로 계산합니다.</li>
+    </ol>
+    <p>정관이나 규정 없이 주주총회 결의만으로 즉흥적으로 금액을 정해 지급하면, 그 금액이 법정 한도를 넘는 부분은 회사 비용(손금)으로 인정받지 못하고 세무상 불이익이 발생합니다.</p>
+  </section>
+
+  <section>
+    <h2>법인세법상 손금산입 한도 (규정이 없을 때)</h2>
+    <p>정관이나 위임 규정이 없는 회사가 임원에게 퇴직금을 지급할 때, 회사가 비용으로 인정받을 수 있는 한도는 다음과 같습니다.</p>
+    <div class="callout">
+      <strong>법정 한도액 = 퇴직 직전 1년간 총급여액 × 10% × 근속연수</strong><br>
+      (근속연수는 역년으로 계산하며, 1년 미만 기간은 월수로 계산하고 1개월 미만은 산입하지 않습니다.)
+    </div>
+    <p>이 한도를 초과해 지급한 금액은 회사의 손금(비용)으로 인정되지 않고, 해당 임원에 대한 <strong>상여(보너스)로 재분류</strong>됩니다.</p>
+  </section>
+
+  <section>
+    <h2>소득세법상 퇴직소득 인정 한도 — 별도로 또 있습니다</h2>
+    <p>법인세법상 한도 안에서 지급했다고 해도 끝이 아닙니다. 임원 본인이 받은 돈을 세제상 유리한 <strong>퇴직소득</strong>으로 인정받을 수 있는지는 소득세법이 따로 정한 배수 기준을 통과해야 합니다. 이 기준을 넘는 금액은 퇴직소득이 아니라 <strong>근로소득(근속 기간의 급여)</strong>으로 과세됩니다.</p>
+    <ul>
+      <li><strong>2012년 1월 1일 ~ 2019년 12월 31일 근무분</strong> — 해당 기간 연평균 환산급여 ÷ 10 × 근속연수(개월수/12) × <strong>3배</strong></li>
+      <li><strong>2020년 1월 1일 이후 근무분</strong> — 해당 기간 연평균 환산급여 ÷ 10 × 근속연수(개월수/12) × <strong>2배</strong></li>
+    </ul>
+    <p>2020년을 기점으로 배수가 3배에서 2배로 줄어든 것이 핵심입니다. 근무기간이 이 시점을 걸쳐 있다면 기간을 나눠 각각 계산한 뒤 합산해야 합니다.</p>
+  </section>
+
+  <section>
+    <h2>실제 숫자로 계산해보는 예시</h2>
+    <p>정관에 임원 퇴직급여지급규정이 없는 회사의 대표이사가 2021년 3월 1일 취임해 2026년 2월 28일 퇴직(근속 5년)하고, 퇴직 직전 1년간 총급여 1억 2,000만원을 받은 경우로 계산해보겠습니다. (전체 근무기간이 2020년 이후이므로 소득세법 배수는 2배로 계산)</p>
+    <h3>1단계 — 법인세법상 손금산입 한도 (회사가 비용 인정받는 한도)</h3>
+    <p>1억 2,000만원 × 10% × 5년 = <strong>6,000만원</strong></p>
+    <h3>2단계 — 소득세법상 퇴직소득 인정 한도 (개인이 퇴직소득으로 인정받는 한도)</h3>
+    <p>1억 2,000만원 ÷ 10 × 5 × 2 = 1,200만원 × 5 × 2 = <strong>1억 2,000만원</strong></p>
+    <h3>3단계 — 회사가 실제로 8,000만원을 퇴직금으로 지급했다면</h3>
+    <p>법인세법상 손금 한도(6,000만원)를 2,000만원 초과했으므로, 이 2,000만원은 회사 비용으로 인정되지 않고 해당 대표이사에 대한 <strong>상여로 재분류</strong>됩니다. 재분류된 2,000만원은 퇴직소득이 아니라 근로소득으로 과세되어, 대표이사 입장에서는 그만큼 세금 부담이 커집니다.</p>
+    <p>반면 소득세법상 퇴직소득 인정 한도(1억 2,000만원)보다는 지급액(8,000만원)이 작으므로, 손금 한도를 넘긴 2,000만원을 제외한 나머지 6,000만원은 정상적으로 퇴직소득으로 인정받습니다.</p>
+    <div class="callout">
+      <strong>정관에 규정을 미리 만들어 두면 달라집니다</strong> — 만약 이 회사가 정관에 "대표이사 퇴직 시 최종 급여의 3배를 지급한다"는 규정을 미리 만들어 뒀다면, 법인세법상 손금 한도는 정관 규정 금액(1억 2,000만원 × 3 = 3억 6,000만원, 예시)으로 대폭 늘어납니다. 다만 이 경우에도 소득세법상 퇴직소득 인정 한도(위 예시에서는 1억 2,000만원)를 넘는 부분은 여전히 근로소득으로 과세됩니다.
+    </div>
+  </section>
+
+  <section>
+    <h2>비등기임원이라면 이야기가 완전히 다릅니다</h2>
+    <p>회사 등기부에 이름이 올라가 있지 않은 비등기임원(실질은 부서장급 관리직에 가까운 경우가 많음)은 위 규정과 무관하게 <strong>일반 직원과 동일하게 근로기준법과 근로자퇴직급여 보장법이 적용</strong>됩니다. 근속 1년 이상이면 정관이나 주주총회 결의 없이도 퇴직금이 자동으로 발생하며, 계산 방식도 평균임금 × 30일 × 근속연수로 동일합니다.</p>
+    <p>회사 입장에서 "임원이니까 퇴직금 규정이 다르다"고 일괄 적용하면, 실제로는 근로자로 판단되는 비등기임원에게 퇴직금을 적게 지급하는 문제가 생길 수 있습니다.</p>
+  </section>
+
+  <section>
+    <h2>자주 하는 실수</h2>
+    <ol>
+      <li><strong>정관 규정 없이 주주총회 결의만으로 큰 금액을 지급하는 경우</strong> — 법인세법상 한도를 넘는 부분은 회사 비용으로 인정받지 못해 법인세 부담이 늘어납니다. 퇴직금 규모가 클 것으로 예상된다면 미리 정관에 지급 규정을 마련해두는 것이 안전합니다.</li>
+      <li><strong>등기임원과 비등기임원을 직함만으로 구분하는 경우</strong> — "이사", "상무" 같은 직함이 아니라 등기부등본 등재 여부가 기준입니다.</li>
+      <li><strong>직원에서 임원으로 승진한 경우 근속연수를 임원 취임일부터만 계산하는 경우</strong> — 직원으로 근무하던 기간에 퇴직금을 정산하지 않았다면, 직원 근무기간을 임원 근속연수에 합산할 수 있습니다.</li>
+      <li><strong>퇴직연금(DC형)에 가입된 임원의 부담금을 일반 직원과 같은 방식으로만 처리하는 경우</strong> — 임원에 대한 퇴직연금 부담금도 법인세법 시행령 제44조 제4항의 한도 규정을 적용받으므로, 한도 초과분이 있는지 퇴직 시점에 별도로 확인해야 합니다.</li>
+    </ol>
+  </section>
+
+  <div class="callout">
+    <strong>안내</strong> — 이 글은 일반적인 계산 구조를 설명하는 참고용 정보이며, 실제 세무 처리는 정관 내용, 근무 이력, 특수관계 여부 등에 따라 달라질 수 있습니다. 정확한 금액 산정과 신고는 세무사 등 전문가와 상담하시는 것을 권장합니다.
+  </div>
+
+  <section>
+    <h2>관련 글 더 보기</h2>
+    <ul>
+      <li><a href="/severance-pay-guide.html">퇴직금 지급 기준과 계산 방법</a></li>
+      <li><a href="/severance-tax-guide.html">퇴직소득세 계산 방법과 절세 방법</a></li>
+      <li><a href="/pension-db-dc-guide.html">DB형과 DC형 퇴직연금 차이</a></li>
+    </ul>
+  </section>
+
+  <div class="cta">
+    <p>일반 직원이라면, 근속연수와 임금만으로 예상 퇴직금을 바로 계산해보세요.</p>
+    <a href="/">퇴직금 계산기 바로 가기</a>
+  </div>
+
+  <footer>
+    <span>근로 계산 도구</span>
+    <span><a href="/">홈</a><a href="/privacy.html">개인정보처리방침</a><a href="/terms.html">이용약관</a><a href="/contact.html">문의하기</a></span>
+  </footer>
+</div>
+</body>
+</html>
